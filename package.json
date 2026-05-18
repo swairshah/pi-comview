@@ -1,0 +1,33 @@
+{
+  "name": "pi-comview",
+  "version": "0.1.0",
+  "description": "Pi package providing /review command powered by bundled comview binaries",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "comview",
+    "review"
+  ],
+  "scripts": {
+    "postinstall": "node ./scripts/postinstall.mjs",
+    "update:comview": "bash ./scripts/update-comview.sh"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  },
+  "files": [
+    "extensions",
+    "bin",
+    "scripts",
+    "COMVIEW_VERSION",
+    "README.md",
+    "LICENSE"
+  ]
+}

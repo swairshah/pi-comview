@@ -1,0 +1,12 @@
+{
+  "upstreamRepo": "https://github.com/rockorager/comview.git",
+  "version": "main-9ad8aae",
+  "commit": "9ad8aaef9dae090d5b69bde109be4907ebad69b0",
+  "builtAt": "2026-05-18T22:11:32Z",
+  "targets": [
+    "darwin-arm64",
+    "darwin-amd64",
+    "linux-arm64",
+    "linux-amd64"
+  ]
+}

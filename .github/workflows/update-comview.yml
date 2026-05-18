@@ -1,0 +1,59 @@
+name: Update bundled comview binaries
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Optional upstream comview tag (e.g. v0.2.0). Leave empty for latest tag/default branch."
+        required: false
+        type: string
+      upstream_repo:
+        description: "Optional upstream repository URL"
+        required: false
+        default: "https://github.com/rockorager/comview.git"
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - name: Update bundled binaries
+        env:
+          UPSTREAM_REPO: ${{ github.event.inputs.upstream_repo }}
+        run: |
+          if [ -n "${{ github.event.inputs.tag }}" ]; then
+            make update TAG="${{ github.event.inputs.tag }}"
+          else
+            make update
+          fi
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: update bundled comview binaries"
+          branch: "chore/update-comview-binaries"
+          delete-branch: true
+          title: "chore: update bundled comview binaries"
+          body: |
+            Automated update of bundled comview binaries.
+
+            This PR refreshes:
+            - COMVIEW_VERSION
+            - bin/comview-*
+            - bin/checksums.txt
+            - bin/metadata.json
+          labels: |
+            dependencies
+            automation

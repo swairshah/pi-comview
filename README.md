@@ -1,11 +1,17 @@
 # pi-comview
 
-Pi package that adds a `/review` command for a comview-driven review loop:
+Pi package that adds a `/review` command for a [comview](https://github.com/rockorager/comview)-driven review loop:
+
+![pi-comview demo](assets/demo.gif)
 
 1. Open diff in `comview`
 2. Add comments (`i`), save (`:w`), quit (`:q`)
 3. Pi automatically reads `.comview/comments.json`
-4. Pi addresses only **new** comments by default
+4. Pi addresses comments by default
+
+## Attribution
+
+This package bundles the [`comview`](https://github.com/rockorager/comview) binary, originally created by [rockorager](https://github.com/rockorager). See the upstream repository for the comview source code and license.
 
 ## Install
 

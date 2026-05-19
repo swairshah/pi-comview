@@ -2,7 +2,7 @@
 
 Pi package that adds a `/review` command for a [comview](https://github.com/rockorager/comview)-driven review loop:
 
-![pi-comview demo](assets/demo.gif)
+![pi-comview demo](assets/demo-4x.gif)
 
 1. Open diff in `comview`
 2. Add comments (`i`), save (`:w`), quit (`:q`)
